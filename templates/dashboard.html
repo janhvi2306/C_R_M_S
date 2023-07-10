@@ -1,0 +1,64 @@
+{% extends 'admin/admin_header.html' %}
+{% block body %}
+
+    <!-- offcanvas -->
+    <main class="mt-5 pt-3">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-12 fw-3 ms-3 mt-5">
+            <h2>Dashboard</h2>
+          </div>
+        </div>
+        <div class="row mt-4 ms-2">
+          <div class="col-md-3 mb-3">
+            <div class="card bg-warning  text-white h-100">
+              <div class="card-body py-5" style="font-size:20px;"><i class="bi bi-person-fill"></i>&nbsp;Student's Detail<h1 class="text-muted" style="margin-left:250px;margin-top:-40px;"> {{sdet_count}}</h1></div>
+              
+              <div class="card-footer d-flex bg-primary"> 
+                <a href={% url 'admin/admin_manageStud/adminstud_det' %} style="text-decoration:none;color:white;">
+                View Details</a>
+                <span class="ms-auto">
+                  <i class="bi bi-chevron-right"></i>
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 mb-3">
+            <div class="card bg-warning text-white h-100">
+              <div class="card-body py-5" style="font-size:20px;"><i class="bi bi-building"></i> &nbsp;Companies Detail<h1 class="text-muted" style="margin-left:250px;margin-top:-40px;"> {{jobdet_count}}</h1></div>
+              <div class="card-footer d-flex bg-primary">
+                <a href={% url 'admin/admin_manageComp/admincompany_det' %} style="text-decoration:none;color:white;"> View Details</a>
+                <span class="ms-auto">
+                  <i class="bi bi-chevron-right"></i>
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 mb-3">
+            <div class="card bg-warning  text-white h-100">
+              <div class="card-body py-5" style="font-size:20px;"><i class="bi bi-person"></i>&nbsp;Applied Candidates<h1 class="text-muted" style="margin-left:250px;margin-top:-40px;">{{applied_cand_count}}</i></div>
+              <div class="card-footer d-flex bg-primary" >
+                <a href="{% url 'admin/admin_manageStud/appliedcandidates' %}" style="text-decoration:none;color:white;"> View Details</a>
+                <span class="ms-auto">
+                  <i class="bi bi-chevron-right"></i>
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 mb-3 ">
+            <div class="card bg-warning  text-white h-100">
+              <div class="card-body py-5" style="font-size:20px;"><i class="bi bi-check"></i>&nbsp;Shortlisted Candidates<h1 class="text-muted" style="margin-left:260px;margin-top:-40px;">{{shortlisted_cand_count}}</i></div>
+              <div class="card-footer d-flex bg-primary" >
+                <a href="{% url 'admin/admin_manageStud/shortlistedCand' %}" style="text-decoration:none;color:white;">View Details</a>
+                <span class="ms-auto">
+                  <i class="bi bi-chevron-right"></i>
+                </span>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+    </div>
+  
+</main>
+{% endblock body %}

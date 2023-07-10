@@ -1,0 +1,59 @@
+{% extends 'admin/admin_header.html' %}
+{% block body %} 
+
+<main class="mt-5 pt-3">
+  <div class="container-fluid">
+    <div class="row mt-4">
+      {% for message in messages %}
+      <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+        <strong>Message: </strong>{{ message }}
+        <button id='closeModal' type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      {% endfor %}
+      <div class="col-md-12 fw-3 ms-3 mt-4">
+        <h2>Company's Detail</h2>
+      </div>
+      <div class="" style="margin-left:1250px;font-size:17px;">
+        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addModal" style="border-radius:6px;"><a href="{% url 'admin/admin_manageComp/adminAddComp' %}" style="color:white;text-decoration:none;"><i class="fa fa-plus" aria-hidden="true"></i>&nbsp;Add Record</a></button>
+    </div>
+    <div class="col-md-20 fw-1 ms-3 mt-5">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Company Name</th>
+            <th scope="col">Company Email</th>
+            <th scope="col">Job Profile</th>
+            <th scope="col">Vacancy</th>
+            <th scope="col">Salary</th>
+            <th scope="col">Location</th>
+            <th scope="col">Last Date ToApply</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        {% for comp in comp_det%}
+        <tbody>
+          <tr>
+            <td>{{comp.id}}</td>
+            <td>{{comp.company_name}}</td>
+            <td>{{comp.Company_email}}</td>
+            <td>{{comp.job_post}}</td>
+            <td>{{comp.vacancy}}</td>
+            <td>{{comp.salary}}</td>
+            <td>{{comp.location}}</td>
+            <td>{{comp.last_date_toapply}}</td>
+            <td>
+              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editModal"
+                style="border-color:1px black;border-radius:4px;background:white;"><a href="{% url 'admin/admin_manageComp/adminUpdateComp' comp.id %}"><i class="bi bi-pen-fill"
+                  style="color:green;"></i><a></button>
+              &nbsp;<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#deleteModal"
+                style="border-color:1px black;border-radius:4px;background:white;"><a href="{% url 'admin/admin_manageComp/adminRemoveComp' comp.id %}"> <i class="bi bi-trash-fill"
+                  style="color:red"></i><a></button>
+            </td>
+          </tr>
+        </tbody>
+        {% endfor %}
+    </table>
+
+</main>
+{% endblock body %}

@@ -1,0 +1,24 @@
+{% extends 'admin/admin_header.html' %}
+{% block body %}
+<!---delete modal-->
+<div class="row">
+    <div class="col-sm-6 offset-2">
+        <form action="" method="POST">
+            {% csrf_token %}
+            <center>
+                <h3 style="margin-top:200px;margin-left:230px;">
+                    <i class="bi bi-check-circle" style="font-size:90px;color:green;font-weight:bold;"></i><h3>
+                        <h3 style="margin-top:30px;font-size:45px;letter-spacing:2px;font-weight:bolder;margin-left:230px;">    Are you sure, to reject the candidate?</h3>
+            <div style="margin-top:10px;"><br><br>
+                
+                <button type="submit" class="btn btn-success" style="margin-left:55px;"><h5>Yes</h5></button>
+              
+            </div>
+        </center>
+        </form>
+          
+        <center><button type="button" class="btn btn-danger" style="margin-left:400px;margin-top:-70px;"><a href="{% url 'admin/admin_manageStud/appliedcandidates' %}" style="text-decoration:none;color:white;"><h5>No</h5></a></button> </center>
+    </div>
+</div>
+<!---delete modal end-->
+{% endblock body %}

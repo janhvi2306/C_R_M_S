@@ -1,0 +1,140 @@
+{% extends 'admin/admin_header.html' %}
+{% block body %} 
+
+<main class="mt-5 pt-3">
+  <div class="container-fluid">
+    <div class="row mt-4">
+      {% for message in messages %}
+      <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+        <strong>Message: </strong>{{ message }}
+        <button id='closeModal' type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      {% endfor %}
+      <div class="col-md-12 fw-3 ms-3 mt-4">
+        <h2>Applied Candidates</h2>
+      </div><br><br>
+      <form action="" method="post">
+        {% csrf_token %}
+      <div class="input-group">
+        <div class="form-outline"><br><br>
+          <h6><b>From Date:</b>
+          <input type="date"   class="form-control" name="fdate" >&emsp;</h6>
+          <h6><b>To Date:</b>
+          <input type="date" class="form-control" name="tdate" ></h6><br>
+        
+        <button type="submit" class="btn btn-primary" style="font-size:14px;length:10px;height:40px;">
+          Search
+        </button>
+      </div>
+    </div>
+    </form>
+    <form action="" method="get">
+      {% csrf_token %}
+    <div class="input-group">
+      <div class="form-outline"><br><br>
+       
+        <input type="text" class="form-control" name="comp_wise" placeholder="Search by company name"><br>
+      
+      <button type="submit" class="btn btn-primary" style="font-size:14px;length:10px;height:40px;">
+        Search
+      </button>
+    </div>
+  </div>
+  </form>
+    <div class="col-md-20 fw-1 ms-3 mt-5">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Class</th>
+            <th scope="col">Year</th>
+            <th scope="col">Company</th>
+            <th scope="col">Job Profile</th>
+            <th scope="col">Resume</th>
+            <th scope="col">Date</th>
+            <th scope="col">Status</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        {% for d in cand_det2%}
+        <tbody>
+          <tr>
+            <td>{{d.id}}</td>
+            <td>{{d.name}}</td>
+            <td>{{d.email}}</td>
+            <td style="text-transform:uppercase;">{{d.sclass}}</td>
+            <td>{{d.year}}</td>
+            <td>{{d.company_name}}</td>
+            <td>{{d.job_post}}</td>
+            <td><a href="{{ d.resume.url }}" download >{{d.resume}}</a> </td>
+            <td>{{d.date}}</td>
+            <td>{{d.status}}</td>
+            
+            <td>  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#select"
+              style="border-color:1px black;border-radius:4px;background:green;"><a href="{% url 'admin/admin_manageStud/suretoselectcand' d.id %}"><i class="bi bi-check"
+                style="color:white;"></i><a></button>
+            &nbsp;<button type="button" class="btn btn-primary"  data-bs-toggle="modal" data-bs-target="#reject"
+              style="border-color:1px black;border-radius:4px;background:red;"><a href="{% url 'admin/admin_manageStud/suretoremove_appCand' d.id %}"> <i class="bi bi-x"
+                style="color:white"></i><a></button></td>
+          </tr>
+        </tbody>
+        {% endfor %}
+      </table>
+      <button class="btn btn-success" onclick="window.print()"  style="border-radius:6px;"><i class="fa fa-download" aria-hidden="true"></i>&nbsp;Report</a></button>
+    </div>
+  </div>
+      </main>
+<!---select modal-->
+{% comment %} <form action="" method="POST">
+  {% csrf_token %}
+  
+<div class="modal" tabindex="-1" role="dialog" id="select">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header" style="background:#1de486;">
+        <h5 class="modal-title" style="color:white;">Shortlist Candidate</h5>
+        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close" style="border:none;color:red;background:#1de486;font-size:30px;">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p><h3>Are you sure?</h3></p>
+      </div>
+      
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success"><a href="" style="text-decoration:none;color:white;">Yes</a></button>
+         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+      </div>
+     
+    </div>
+  </div>
+</div>
+
+</form>
+
+<!----delete modal---->
+
+<div class="modal" tabindex="-1" role="dialog" id="reject">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header" style="background:red;">
+        <h5 class="modal-title" style="color:white;">Reject Candidate</h5>
+        <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close" style="border:none;color:white;background:red;font-size:30px;">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p><h3>Are you sure?</h3></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" >Yes</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+      </div>
+    </div>
+  </div>
+</div> {% endcomment %}
+
+
+{% endblock body %}

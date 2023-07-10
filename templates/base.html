@@ -1,0 +1,447 @@
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Bootstrap CSS -->
+  <link media="all" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Rancho&effect=shadow-multiple">
+
+  <title> {% block title %} {% endblock title %}CRS</title>
+  <style>
+    .nav-item {
+      margin: 9px;
+      margin-top: 29px;
+      font-weight: 400;
+      font-size: 16px;
+      position: relative;
+      cursor: pointer;
+    }
+
+    .nav-item2 {
+      margin: 9px;
+      margin-top: 29px;
+      font-weight: 400;
+      font-size: 16px;
+      position: relative;
+      cursor: pointer;
+    } 
+    .dropbtn {
+      padding: 16px;
+      font-size: 16px;
+      border: none;
+    }
+
+    /* The container <div> - needed to position the dropdown content */
+    .dropdown {
+      position: relative;
+      display: inline-block;
+      margin-top: 9px;
+    }
+
+    .dropdown-content {
+      position: absolute;
+      background-color: #f9f9f9;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+      display: none;
+
+    }
+
+    .dropdown-content a {
+      color: black;
+      padding: 12px 16px;
+      margin-top: 20px;
+      text-decoration: none;
+      display: block;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    .dropdown-content a:hover {
+      //background:#adb5bd;
+      font-weight: bold;
+    }
+
+    .nav-item:after {
+      content: "";
+      position: absolute;
+      background-color: #13e423;
+      height: 3px;
+      width: 0;
+      margin-left: 3px;
+      transition: 0.3s;
+    }
+
+    .nav-item:hover:after {
+      width: 90%;
+    }
+
+    .logo {
+      width: 96px;
+      height: 10px;
+      position: absolute;
+      margin-left: -12px;
+    }
+
+    .navbar-brand {
+      letter-spacing: 1px;
+      font-weight: bolder;
+      font-size: 29px;
+      margin-left: 77px;
+      margin-top: 17px;
+    }
+
+    .aboutus {
+      text-align: center;
+      font-size: 25px;
+      letter-spacing: 1px;
+      word-spacing: 2px;
+    }
+
+    .aboutus::after {
+      content: '';
+      height: 2px;
+      width: 20%;
+      background: black;
+      positin: absolute;
+    }
+
+    .text1 {
+      position: absolute;
+      font-size: 20px;
+    }
+
+    .lheading {
+      letter-spacing: -0.5px;
+      font-weight: bold;
+    }
+
+    .lheading:after {
+      content: "";
+      position: absolute;
+      background-color: #13e423;
+      height: 3px;
+      width: 7%;
+      margin-left: 780px;
+    }
+
+    .col6 {
+      height: 60px;
+      row: 10px;
+      display: flex;
+      flex-flow: row wrap;
+      box-shadow: 0px 3px 3px black;
+      transition: transform ease 300ms;
+    }
+
+    .col6:hover {
+      transform: translate(0, -10px);
+    }
+
+    footer {
+      background: #F79F1F;
+      color: white;
+      margin-top: 100px;
+    }
+
+    footer a {
+      color: #fff;
+      font-size: 14px;
+      transition-duration: 0.2s;
+      text-decoration: none;
+      font-weight: 500;
+
+    }
+
+    footer a:hover {
+      color: green;
+      text-decoration: none;
+    }
+
+    .copy {
+      font-size: 12px;
+      padding: 10px;
+      border-top: 1px solid #FFFFFF;
+    }
+
+    .footer-middle {
+      padding-top: 2em;
+      color: white;
+    }
+
+    .col-md-3 {
+      flex: 0 0 auto;
+      width: 32%;
+    }
+
+    ul.social-network {
+      list-style: none;
+      display: inline;
+      margin-left: 0 !important;
+      padding: 0;
+    }
+
+    ul.social-network li {
+      display: inline;
+      margin: 0 5px;
+    }
+
+    .social-network a.icoFacebook:hover {
+      background-color: #3B5998;
+    }
+
+    .social-network a.icoLinkedin:hover {
+      background-color: #007bb7;
+    }
+
+    .social-network a.icoFacebook:hover i {
+      color: #fff;
+    }
+
+    .social-network a.icoLinkedin:hover i {
+      color: #fff;
+    }
+
+    .social-network a.socialIcon:hover {
+      color: #44BCDD;
+    }
+
+    .socialHoverClass {
+      color: #44BCDD;
+    }
+
+    .social-circle li a {
+      display: inline-block;
+      position: relative;
+      margin: 0 auto 0 auto;
+      -moz-border-radius: 50%;
+      -webkit-border-radius: 50%;
+      border-radius: 50%;
+      text-align: center;
+      width: 30px;
+      height: 30px;
+      font-size: 15px;
+    }
+
+    .social-circle li i {
+      margin: 0;
+      line-height: 30px;
+      text-align: center;
+    }
+
+    .social-circle li a:hover i {
+      -moz-transform: rotate(360deg);
+      -webkit-transform: rotate(360deg);
+      -ms--transform: rotate(360deg);
+      transform: rotate(360deg);
+      -webkit-transition: all 0.2s;
+      -moz-transition: all 0.2s;
+      -o-transition: all 0.2s;
+      -ms-transition: all 0.2s;
+      transition: all 0.2s;
+    }
+
+    .triggeredHover {
+      -moz-transform: rotate(360deg);
+      -webkit-transform: rotate(360deg);
+      -ms--transform: rotate(360deg);
+      transform: rotate(360deg);
+      -webkit-transition: all 0.2s;
+      -moz-transition: all 0.2s;
+      -o-transition: all 0.2s;
+      -ms-transition: all 0.2s;
+      transition: all 0.2s;
+    }
+
+    .social-circle i {
+      color: #595959;
+      -webkit-transition: all 0.8s;
+      -moz-transition: all 0.8s;
+      -o-transition: all 0.8s;
+      -ms-transition: all 0.8s;
+      transition: all 0.8s;
+    }
+
+    .social-network a {
+      background-color: #F9F9F9;
+    }
+
+    .social-network a:hover {
+      background: #ff304d;
+    }
+
+      {
+      % comment %
+    }
+
+    register page {
+      % endcomment %
+    }
+
+    .divider-text {
+      position: relative;
+      text-align: center;
+      margin-top: 15px;
+      margin-bottom: 15px;
+    }
+
+    .divider-text span {
+      padding: 7px;
+      font-size: 12px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .divider-text:after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      top: 55%;
+      left: 0;
+      z-index: 1;
+    }
+
+    .btn-facebook {
+      background-color: #405D9D;
+      color: #fff;
+    }
+
+    .btn-twitter {
+      background-color: #42AEEC;
+      color: #fff;
+    }
+  </style>
+</head>
+
+<body>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+    crossorigin="anonymous"></script>
+  <nav class="navbar navbar-expand-lg ">
+    <div class="container-fluid">
+      <a href="" style="font-size:58px;text-decoration:none;">C</a><a href=""
+        style="font-size:80px;text-decoration:none;font-weight:bold;color:#F79F1F">R</a> <a href=""
+        style="font-size:58px;text-decoration:none;">M</a><i class="fa fa-graduation-cap" aria-hidden="true"></i>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ms-auto mb-4">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="{% url 'index' %}" style="color:black;font-weight:620;">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#abt" style="color:black;font-weight:620;">About</a>
+          </li>
+          {% if user.is_authenticated %}
+          <li class="nav-item">
+            <a class="nav-link" href="#" style="color:black;font-weight:620;">Resumes</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#ljobs" style="color:black;font-weight:620;">Listed Jobs</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'admin/admin_login' %}" style="color:black;font-weight:620;">Admin</a>
+          </li>
+          <li class="nav-item2">
+            <a class="nav-link" href="#" style="color:black;font-weight: 500;text-transform:capitalize;"><i class="fa fa-user" style="color:red;" aria-hidden="true"></i> &nbsp;{{ user.username }}</a><a href={% url 'logout_user' %} style="color:red;;font-weight: 400;font-size:13px;margin-top:15px;text-decoration:none;margin-left:5px;">Logout</a>&nbsp;<i class="fa fa-sign-out" style="color:red;" aria-hidden="true"></i></a>
+          </li>
+          {% else %}
+          <li class="nav-item1"
+            style="margin: 9px;margin-top: 29px;font-weight: 400;font-size: 16px;position:relative;cursor:pointer;">
+            <div class="dropdown">
+              <a class="dropbtn" style="text-decoration:none;color:black;font-weight:500;">Student</a>
+              <div class="dropdown-content">
+                <a href="{% url 'handlelogin' %}">Login</a>
+                <a href="{% url 'register' %}">Register</a>
+              </div>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" style="color:black;font-weight:620;">Resumes</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#ljobs" style="color:black;font-weight:620;">Listed Jobs</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'admin/admin_login' %}" style="color:black;font-weight:620;">Admin</a>
+          </li>
+          {% endif %}
+        </ul>
+
+      </div>
+    </div>
+
+  </nav>
+  {% for message in messages %}
+  <div class="alert alert-{{ message.tags }} alert-dismissible fade show" data-toggle="modal" role="alert">
+    <strong>Message: </strong>{{ message }}
+    <button id='closeModal' type="button" class="btn-close" data-bs-dismiss="modal"></button>
+  </div>
+  {% endfor %}
+
+  {% block body %} {% endblock body %}
+  <footer class="mainfooter" role="contentinfo">
+    <div class="footer-middle">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3 col-sm-6">
+            <div class="footer-pad" style="margin-left:20px;">
+              <h4>Quick Access</h4>
+              <ul class="list-unstyled">
+                <li><a href="#" style="margin-left:2px;"><i class="fa fa-home"></i> &nbsp; Home</a> </li>
+                <li> <a href="#" style="margin-left:2px;"><i class="fa fa-user"></i> &nbsp;Student</a></li>
+                <li> <a href="#" style="margin-left:2px;"><i class="fa fa-info"></i> &nbsp; About us</a></li>
+                <li> <a href="#" style="margin-left:2px;"><i class="fa fa-phone"></i> &nbsp;Contact us</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-md-3 col-sm-6">
+            <div class="footer-pad">
+              <h4> Contact Info</h4>
+              <ul class="list-unstyled">
+                <li><a href="#"><i class="fa fa-phone"></i> &nbsp; +123-456-6789 </a> </li>
+                <li><a href="#"><i class="fa fa-phone"></i> &nbsp;+111-222-4445</a> </li>
+                <li><a href="#"><i class="fa fa-envelope" aria-hidden="true"></i> &nbsp;janhv91_8@gmail.com</a></li>
+                <li><a href="#"><i class="fa fa-map-marker" aria-hidden="true"></i> &nbsp;Pune, India 411043</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-md-3" style="margin-right:20px;">
+            <h4> Follow Us </h4>
+            <ul class="social-network social-circle">
+              <li> <a href="#" class="icoFacebook" title="Facebook"> <i class="fa fa-facebook"> </i> </a> </li>
+              <li> <a href="#" class="icoLinkedin" title="Linkedin"> <i class="fa fa-linkedin"> </i> </a> </li>
+              <li> <a href="#"> <i class="fa fa-youtube" aria-hidden="true"> </i> </a> </li>
+            </ul>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 copy">
+            <p class="text-center"> © Copyright 2022 - Janhvi's CRM. All rights reserved. </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </footer>
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://code.jquery.com/jquery-1.12.4.min.js"
+    integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ"
+    crossorigin="anonymous"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js"
+    integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>

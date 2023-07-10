@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+{% block title%} CRM {% endblock title %}
+{% block body %}
+<!--add modal start-->
+{% comment %} <div class="row">
+    <div class="col-sm-6 offset-2">
+
+      <!-- Modal Header -->
+      <h3 class="alert alert-success" style="margin-top:100px;">Education Detail's</h3><br>
+      <!-- Modal body -->
+        <form action="" method="POST" enctype="multipart/form-data">
+          {% csrf_token %}
+        {% comment %} {{form1.as_p}} 
+          {{form1.as_p}}
+          {{form.as_p}}
+     
+          <button type="submit" class="btn btn-success">Submit</button>
+        </form>
+
+    
+    </div>
+  </div> {% endcomment %}
+
+  <form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="col-sm-6 offset-2">
+      <h3 class="alert alert-success" style="margin-top:100px;">Education Detail's</h3><br><br>
+    <div class="form-group">
+      <label for="formGroupExampleInput"><b>Name</b></label>
+      <input type="text" name="name" class="form-control" value="{{user_det.name}}"  readonly>
+    </div><br>
+    <div class="form-group">
+      <label for="formGroupExampleInput2"><b>Email</b></label>
+      <input type="email" name="email" class="form-control" value="{{user_det.email}}"  readonly>
+    </div><br>
+    <div class="form-group">
+      <label for="formGroupExampleInput"><b>Class</b></label>
+      <input type="text" name="sclass" class="form-control" value="{{user_det.sclass}}" readonly>
+    </div><br>
+    <div class="form-group">
+      <label for="formGroupExampleInput2"><b>Year</b></label>
+      <input type="number" name="year" class="form-control" value="{{user_det.year}}" readonly>
+    </div><br>
+    <div class="form-group">
+      <label for="formGroupExampleInput"><b>Company Name</b></label>
+      <input type="text" name="company_name" class="form-control" value="{{comp_det.company_name}}" readonly>
+    </div><br>
+    <div class="form-group">
+      <label for="formGroupExampleInput2"><b>High School Name</b></label>
+      <input type="text" name="class10clgname" class="form-control"  placeholder="enter high school name">
+    </div><br>
+    <div class="form-group">
+      <label for="formGroupExampleInput"><b>Percentage(%)</b></label>
+      <input type="number" name="class10per" class="form-control"  placeholder="enter percentage">
+    </div><br>
+    <div class="form-group">
+      <label for="formGroupExampleInput2"><b>Senior Secondary School Name</b></label>
+      <input type="text" name="class12clgname" class="form-control"  placeholder="enter senior secondry name">
+    </div><br>
+    <div class="form-group">
+      <label for="formGroupExampleInput"><b>Percentage(%)</b></label>
+      <input type="number" name="class12per" class="form-control"  placeholder="enter percentage">
+    </div><br>
+    <div class="form-group">
+      <label for="formGroupExampleInput2"><b>Job Post</b></label>
+      <input type="text" name="job_post" class="form-control" value="{{comp_det.job_post}}" readonly>
+    </div><br>
+    <div class="form-group">
+      <label for="formGroupExampleInput2"><b>Resume</b></label>
+      <input type="file" name="resume" class="form-control" >
+    </div><br>
+    <button type="submit" class="btn btn-success">Submit</button>
+  </form>
+</div>
+  <!--add modal end-->
+{% endblock body %}

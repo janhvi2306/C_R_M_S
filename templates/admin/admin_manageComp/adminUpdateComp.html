@@ -1,0 +1,19 @@
+{% extends 'admin/admin_header.html' %}
+{% block body %}
+<div class="row">
+      <div class="col-sm-6 offset-2">
+
+        <!-- Modal Header -->
+        <h3 class="alert alert-info" style="margin-top:100px;">Edit Details</h3><br>
+        <!-- Modal body -->
+          <form action="" method="POST">
+            {% csrf_token %}
+            {{form.as_p}}
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+
+
+      </div>
+    </div>
+  <!--edit modal end-->
+  {% endblock body %}

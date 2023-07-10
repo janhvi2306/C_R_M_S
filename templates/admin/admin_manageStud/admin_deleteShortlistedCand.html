@@ -1,0 +1,21 @@
+{% extends 'admin/admin_header.html' %}
+{% block body %}
+<!---delete modal-->
+<div class="row">
+    <div class="col-sm-6 offset-2">
+        <form action="" method="POST">
+            {% csrf_token %}
+            <center>
+                <h3 style="margin-top:200px;">
+                    <i class="bi bi-exclamation-circle" style="font-size:90px;color:red;font-weight:bold;"></i><h3>
+                        <h3 style="margin-top:10px;font-size:45px;letter-spacing:2px;font-weight:bolder;">    Are you sure, to delete?</h3>
+            <div style="margin-top:10px;"><br><br>
+                <button type="submit" class="btn btn-danger" ><h5>Yes</h5></button>
+                <button type="button" class="btn btn-success" data-bs-dismiss="modal" style="margin-left:35px;"><a href="{% url 'admin/admin_manageStud/shortlistedCand' %}" style="text-decoration:none;color:white;"><h5>No</h5></a></button>
+            </div>
+        </center>
+        </form>
+    </div>
+</div>
+<!---delete modal end-->
+{% endblock body %}
